@@ -1,4 +1,4 @@
-# React Material UI Custom Dashboard with Typescript
+# React Material UI Custom Dashboard with Javascript
 
 ## Dashboard
 ![Dashboard UI](https://github.com/AkshayGadekar/React-MUI-Custom-Dashboard/blob/master/src/media/images/dashboardUI.png)
