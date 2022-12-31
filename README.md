@@ -35,7 +35,7 @@ APIs used inside are dummy APIs, just given for example, they can deprecate anyt
 
 Clone this repo and run:
 ```bash
-cd React-MUI-Custom-Dashboard
+cd React-MUI-Dashboard-with-JavaScript
 npm install
 npm start
 ```
