@@ -11,7 +11,6 @@ This is custom dashboard built using react material UI. It has following added f
 - Redux to access user data
 - Axios Progress Bar
 - Code Splitiing
-- Typescript Interfaces
 - Folder Structure suitable for big projects
 - Skeleton loader for pages
 - Snackbar to Handle axios error
