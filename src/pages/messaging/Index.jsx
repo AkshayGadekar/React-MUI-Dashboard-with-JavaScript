@@ -16,7 +16,7 @@ const Index = (props) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [messagesCreatedCount, setMessagesCreatedCount] = useState(0);
 
-  const breadCrumb = menu[5].breadCrumb;
+  const breadCrumb = menu[2].breadCrumb;
 
   const messagesButton = {
     value: 'Add New',

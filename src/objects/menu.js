@@ -30,60 +30,6 @@ const menu = [
         }
     },
     {
-        label: 'Experiences',
-        icon: CallIcon,
-        children: [
-            {
-                label: 'Queue',
-                icon: QueueMusicIcon,
-                href: '/experiences/queue/list',
-                breadCrumb: [
-                    ...prefixBread,
-                    {
-                        label: 'Settings',
-                        link: '/settings/users/list'
-                    },
-                    {
-                        label: 'Users',
-                        link: '/settings/users/list'
-                    },
-                    {
-                        label: 'List'
-                    }
-                ],
-            },
-            {
-                label: 'Streaming',
-                icon: CastIcon,
-                href: '/experiences/streaming/list',
-                breadCrumb: [
-                    ...prefixBread,
-                    {
-                        label: 'Settings',
-                        link: '/settings/roles/list'
-                    },
-                    {
-                        label: 'Roles',
-                        link: '/settings/roles/list'
-                    },
-                    {
-                        label: 'List'
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        label: 'Campaigns',
-        icon: CampaignIcon,
-        href: '/campaigns/list'
-    },
-    {
-        label: 'Reports',
-        icon: ShowChartIcon,
-        href: '/reports/list'
-    },
-    {
         label: 'Nodes',
         icon: AccountTreeIcon,
         href: '/nodes/list',
@@ -127,11 +73,6 @@ const menu = [
                 label: 'List'
             }
         ]
-    },
-    {
-        label: 'Prompts',
-        icon: MicIcon,
-        href: '/prompts/list'
     },
     {
         label: 'Settings',

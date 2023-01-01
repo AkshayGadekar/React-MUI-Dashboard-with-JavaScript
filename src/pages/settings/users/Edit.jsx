@@ -28,7 +28,7 @@ import ShowPermissions from "./components/ShowPermissions";
 import menu from "../../../objects/menu";
 import {replaceDynamicParamInHref} from '../../../funcs/helpers';
 
-const editRoleActionHref = menu[7].children[1].otherHrefs.edit.href;
+const editRoleActionHref = menu[3].children[1].otherHrefs.edit.href;
 
 const Edit = (props) => {
 
@@ -51,7 +51,7 @@ const Edit = (props) => {
     setOpenDialog(false);
   };
 
-  const breadCrumb = menu[7].children[0].otherHrefs.edit.breadCrumb;
+  const breadCrumb = menu[3].children[0].otherHrefs.edit.breadCrumb;
 
   const formik = useFormik({
       initialValues: {first_name: "", last_name: "", email: "", role_id: 0}, 

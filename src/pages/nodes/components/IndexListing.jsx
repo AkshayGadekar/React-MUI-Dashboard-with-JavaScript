@@ -11,7 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import menu from '../../../objects/menu';
 import {replaceDynamicParamInHref} from '../../../funcs/helpers';
 
-const editActionHref = menu[4].otherHrefs.edit.href;
+const editActionHref = menu[1].otherHrefs.edit.href;
 
 const IndexListing = ({data}) => {
   log('Node table rendered');
