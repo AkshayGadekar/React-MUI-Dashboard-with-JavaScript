@@ -1,17 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import apiEndPoints from "../../apiEndPoints";
-import {useNavigate} from "react-router-dom";
-import withAxios from '../../HOC/withAxios';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { loggedIn, gotUser } from '../../store/slices/userSlice';
-import DesktopLoader from './DesktopLoader';
+import { useNavigate } from "react-router-dom";
+import withAxios from "../../HOC/withAxios";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { loggedIn, gotUser } from "../../store/slices/userSlice";
+import DesktopLoader from "./DesktopLoader";
+import { userData } from "../../objects/apiResponses";
 
 const FetchUser = (props) => {
-    const [isLoading, setIsLoading] = useState(true);
-    const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        
+  useEffect(() => {
+    /*
+     * As API server is shut down, we won't call API
+     */
+    /*        
         props.authAxios({...apiEndPoints.auth.getUserDetails})
         .then(res => {
             const successResponse = res.data;
@@ -22,11 +26,14 @@ const FetchUser = (props) => {
         .catch(error => {
             dispatch(loggedIn(false));
         })
-        
-    }, [])
-    
+        */
+    const successResponse = userData;
 
-    return <DesktopLoader />;
-}
+    dispatch(loggedIn(true));
+    dispatch(gotUser(successResponse));
+  }, []);
 
-export default withAxios(FetchUser)
+  return <DesktopLoader />;
+};
+
+export default withAxios(FetchUser);

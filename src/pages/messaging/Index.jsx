@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import Box from '@mui/material/Box';
-import Heading from '../../components/utilities/Heading';
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import Heading from "../../components/utilities/Heading";
 import IndexListing from "./components/IndexListing";
 import Breadcrumb from "../../components/utilities/Breadcrumb";
-import {log} from "../../funcs/helpers";
-import TableSkeleton from '../../components/skeletons/TableSkeleton';
-import withAxios from '../../HOC/withAxios';
+import { log } from "../../funcs/helpers";
+import TableSkeleton from "../../components/skeletons/TableSkeleton";
+import withAxios from "../../HOC/withAxios";
 import menu from "../../objects/menu";
 import Add from "./components/Add";
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import { messages } from "../../objects/apiResponses";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const Index = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,18 +20,26 @@ const Index = (props) => {
   const breadCrumb = menu[2].breadCrumb;
 
   const messagesButton = {
-    value: 'Add New',
-    onClick: () => setOpenDialog(true)
-  }
+    value: "Add New",
+    onClick: () => setOpenDialog(true),
+  };
 
-  const setParentState = { setSnackbarInfo: props.setSnackbarInfo, setShowSnackBar: props.setShowSnackBar, setMessagesCreatedCount };
+  const setParentState = {
+    setSnackbarInfo: props.setSnackbarInfo,
+    setShowSnackBar: props.setShowSnackBar,
+    setMessagesCreatedCount,
+  };
 
   useEffect(() => {
-
     const requestController = new AbortController();
-    
+
     setIsLoading(true);
 
+    /*
+     * As API server is shut down, we won't call API
+     */
+    /*
+    /8
     props.authAxios({...props.apiEndPoints.messages.list, signal: requestController.signal
     }).then((res) => {
 
@@ -47,30 +56,42 @@ const Index = (props) => {
     }).catch((error) => {
         props.processAxiosError(error, props);
     })
+    */
+    props.setShowSnackBar(false);
+
+    const successResponse = messages;
+    log(successResponse);
+
+    setData(successResponse);
+    setIsLoading(false);
+
+    setOpenDialog(false);
 
     return () => {
-      requestController.abort('Request aborted to clean up useEffect.');
-    }
+      requestController.abort("Request aborted to clean up useEffect.");
+    };
   }, [messagesCreatedCount]);
-  
-  log('Messaging rendered');
+
+  log("Messaging rendered");
 
   return (
     <Box>
-      {
-        isLoading
-        ?
+      {isLoading ? (
         <TableSkeleton />
-        :
+      ) : (
         <>
           <Breadcrumb path={breadCrumb} />
           <Heading title="Messages" button={messagesButton} />
-          <Add open={openDialog} close={() => setOpenDialog(false)} setParentState={setParentState} />
+          <Add
+            open={openDialog}
+            close={() => setOpenDialog(false)}
+            setParentState={setParentState}
+          />
           <IndexListing data={data} setParentState={setParentState} />
         </>
-      }
+      )}
     </Box>
-  )
-}
+  );
+};
 
 export default withAxios(Index);
